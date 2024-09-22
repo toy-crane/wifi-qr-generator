@@ -1,7 +1,9 @@
+import { WifiQrCodeGenerator } from "@/components/wifi-qr-code-generator";
+
 export default function Home() {
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <h1 className="text-4xl font-bold">Hello world</h1>
-    </div>
+    <main className="flex flex-col items-center justify-center min-h-screen py-8">
+      <WifiQrCodeGenerator />
+    </main>
   );
 }
