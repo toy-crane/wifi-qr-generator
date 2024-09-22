@@ -75,7 +75,7 @@ export function WifiQrCodeGenerator() {
       <div className="mb-6 flex flex-col items-center">
         <div
           ref={qrCodeRef}
-          className="rounded-lg p-6 flex flex-col justify-between items-center aspect-[1/1] w-96 relative"
+          className="rounded-lg p-6 flex flex-col justify-between items-center aspect-square w-[360px] relative"
           style={{ backgroundColor: form.watch("boxColor") }}
         >
           <div className="text-2xl font-bold text-white text-center mb-2">
@@ -99,14 +99,16 @@ export function WifiQrCodeGenerator() {
             by toycrane
           </div>
         </div>
-        <Button
-          onClick={handleDownload}
-          className="mt-4"
-          variant="outline"
-          disabled={!qrCodeData}
-        >
-          QR 코드 다운로드
-        </Button>
+        <div className="flex space-x-2 mt-4">
+          <Button
+            onClick={handleDownload}
+            className="flex items-center"
+            variant="outline"
+            disabled={!qrCodeData}
+          >
+            <span className="mr-2">QR 코드 다운로드</span>
+          </Button>
+        </div>
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
