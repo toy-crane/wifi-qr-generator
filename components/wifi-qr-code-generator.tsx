@@ -18,23 +18,6 @@ interface ColorPickerProps {
   onChange: (color: string) => void;
 }
 
-export function ColorPicker({ value, onChange }: ColorPickerProps) {
-  return (
-    <div className="relative w-7 h-7">
-      <input
-        type="color"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="absolute inset-0 opacity-0 w-full h-full cursor-pointer border-0"
-      />
-      <div
-        className="w-full h-full rounded-full"
-        style={{ backgroundColor: value }}
-      />
-    </div>
-  );
-}
-
 export function WifiQrCodeGenerator() {
   const [brandName, setBrandName] = useState("ODD");
   const [networkName, setNetworkName] = useState("");
@@ -82,7 +65,7 @@ export function WifiQrCodeGenerator() {
             id="brandName"
             value={brandName}
             onChange={(e) => setBrandName(e.target.value)}
-            placeholder="ODD"
+            placeholder="브랜드 이름을 입력해 주세요"
           />
         </div>
 
@@ -92,7 +75,7 @@ export function WifiQrCodeGenerator() {
             id="networkName"
             value={networkName}
             onChange={(e) => setNetworkName(e.target.value)}
-            placeholder="Placeholder text"
+            placeholder="네트워크 이름을 입력해 주세요"
           />
         </div>
 
@@ -103,7 +86,7 @@ export function WifiQrCodeGenerator() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Placeholder text"
+            placeholder="비밀번호를 입력해 주세요"
           />
         </div>
 
@@ -111,7 +94,7 @@ export function WifiQrCodeGenerator() {
           <Label htmlFor="securityType">암호화 유형</Label>
           <Select value={securityType} onValueChange={setSecurityType}>
             <SelectTrigger id="securityType">
-              <SelectValue placeholder="Selected option" />
+              <SelectValue placeholder="암호화 유형을 선택해 주세요" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="WPA">WPA/WPA2</SelectItem>
@@ -129,7 +112,7 @@ export function WifiQrCodeGenerator() {
               type="text"
               value={boxColor}
               onChange={(e) => setBoxColor(e.target.value)}
-              placeholder="#000000"
+              placeholder="#000000 형식으로 입력해 주세요"
               className="flex-grow"
             />
           </div>
@@ -139,6 +122,23 @@ export function WifiQrCodeGenerator() {
           생성하기
         </Button>
       </div>
+    </div>
+  );
+}
+
+function ColorPicker({ value, onChange }: ColorPickerProps) {
+  return (
+    <div className="relative w-7 h-7">
+      <input
+        type="color"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="absolute inset-0 opacity-0 w-full h-full cursor-pointer border-0"
+      />
+      <div
+        className="w-full h-full rounded-full"
+        style={{ backgroundColor: value }}
+      />
     </div>
   );
 }
