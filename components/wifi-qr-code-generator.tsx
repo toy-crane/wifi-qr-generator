@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import * as htmlToImage from "html-to-image";
 import { QRCodeSVG } from "qrcode.react";
 import { Input } from "@/components/ui/input";
 import {
@@ -40,6 +41,7 @@ const formSchema = z.object({
 
 export function WifiQrCodeGenerator() {
   const [qrCodeData, setQRCodeData] = useState("");
+  const qrCodeRef = useRef<HTMLDivElement>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -57,11 +59,22 @@ export function WifiQrCodeGenerator() {
     setQRCodeData(wifiString);
   };
 
+  const handleDownload = async () => {
+    if (qrCodeRef.current && qrCodeData) {
+      const dataUrl = await htmlToImage.toPng(qrCodeRef.current);
+      const link = document.createElement("a");
+      link.download = "wifi-qr-code.png";
+      link.href = dataUrl;
+      link.click();
+    }
+  };
+
   return (
     <div className="container max-w-2xl w-full mx-auto p-4 bg-white">
       <h1 className="text-4xl font-bold text-center mb-6">WIFI QRCODE</h1>
-      <div className="mb-6 flex justify-center">
+      <div className="mb-6 flex flex-col items-center">
         <div
+          ref={qrCodeRef}
           className="rounded-lg p-6 flex flex-col justify-between items-center aspect-[1/1] w-96 relative"
           style={{ backgroundColor: form.watch("boxColor") }}
         >
@@ -86,6 +99,14 @@ export function WifiQrCodeGenerator() {
             by toycrane
           </div>
         </div>
+        <Button
+          onClick={handleDownload}
+          className="mt-4"
+          variant="outline"
+          disabled={!qrCodeData}
+        >
+          QR 코드 다운로드
+        </Button>
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
