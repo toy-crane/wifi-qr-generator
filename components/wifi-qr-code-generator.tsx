@@ -85,9 +85,7 @@ export function WifiQrCodeGenerator() {
                 <QRCodeSVG value={qrCodeData} size={256} />
               </div>
             ) : (
-              <div className="flex aspect-[1/1] w-full border border-dashed border-white rounded bg-white/10">
-                <span className="text-white text-center p-4">QR 코드</span>
-              </div>
+              <div className="flex aspect-[1/1] w-[256px] border border-dashed border-white rounded bg-white/10 items-center justify-center"></div>
             )}
           </div>
           <div className="text-3xl font-bold text-white text-center">
