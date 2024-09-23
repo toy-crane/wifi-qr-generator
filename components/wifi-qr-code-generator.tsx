@@ -46,7 +46,7 @@ export function WifiQrCodeGenerator() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      brandName: "ODD",
+      brandName: "",
       networkName: "",
       password: "",
       securityType: "WPA",
@@ -75,24 +75,22 @@ export function WifiQrCodeGenerator() {
       <div className="mb-6 flex flex-col items-center">
         <div
           ref={qrCodeRef}
-          className="rounded-lg p-6 flex flex-col justify-between items-center aspect-square w-[360px] relative"
+          className="rounded-lg p-3 py-5 flex flex-col justify-between items-center aspect-[3/4] w-[320px] relative"
           style={{ backgroundColor: form.watch("boxColor") }}
         >
-          <div className="text-2xl font-bold text-white text-center mb-2">
-            QR코드로 WIFI 접속
-          </div>
-          <div className="flex-grow flex items-center justify-center">
+          <div className="text-3xl font-bold text-white">WIFI 접속</div>
+          <div className="flex items-center justify-center">
             {qrCodeData ? (
               <div className="bg-white p-3 rounded">
-                <QRCodeSVG value={qrCodeData} size={200} />
+                <QRCodeSVG value={qrCodeData} size={256} />
               </div>
             ) : (
-              <div className="flex items-center justify-center aspect-[1/1] w-[200px] border border-dashed border-white rounded bg-white/10">
+              <div className="flex aspect-[1/1] w-full border border-dashed border-white rounded bg-white/10">
                 <span className="text-white text-center p-4">QR 코드</span>
               </div>
             )}
           </div>
-          <div className="text-3xl font-bold text-white text-center mt-2">
+          <div className="text-3xl font-bold text-white text-center">
             {form.watch("brandName")}
           </div>
           <div className="absolute bottom-2 right-2 text-xs text-white/70">
