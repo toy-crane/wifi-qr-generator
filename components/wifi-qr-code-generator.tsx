@@ -75,7 +75,7 @@ export function WifiQrCodeGenerator() {
       <div className="mb-6 flex flex-col items-center">
         <div
           ref={qrCodeRef}
-          className="rounded-lg p-3 py-5 flex flex-col justify-between items-center aspect-[3/4] w-[320px] relative"
+          className="rounded-lg p-3 py-6 flex flex-col justify-between items-center aspect-[3/4] w-[320px] relative"
           style={{ backgroundColor: form.watch("boxColor") }}
         >
           <div className="text-3xl font-bold text-white">WIFI 접속</div>
