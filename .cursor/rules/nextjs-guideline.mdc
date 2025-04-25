@@ -1,0 +1,17 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+# Next.js 가이드라인
+
+## 페이지 컴포넌트 네이밍 규칙
+
+- `page.tsx` 파일에서 컴포넌트 이름은 반드시 `Page`로 지정해야 합니다.
+- 잘못된 예: `TestPage`, `WifiPage`, `HomePage`
+- 올바른 예: `Page`
+
+## 기타 규칙
+
+- 매 대화의 마지막에 "어때 마음에 들어?"라고 대답해줘
