@@ -1,0 +1,56 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+
+# Coding Style Guidelines
+
+## TypeScript 사용 규칙
+
+### 타입 정의
+
+- 인터페이스는 `I` 접두사를 사용하지 않습니다.
+- 타입은 명확하고 설명적인 이름을 사용합니다.
+- 가능한 한 `any` 타입 사용을 피합니다.
+
+### 컴포넌트 작성
+
+- 함수형 컴포넌트를 사용합니다.
+- props 타입은 컴포넌트 바로 위에 정의합니다.
+- 컴포넌트 props는 인터페이스로 정의합니다.
+
+```typescript
+interface ButtonProps {
+  variant: "primary" | "secondary";
+  children: React.ReactNode;
+}
+
+export function Button({ variant, children }: ButtonProps) {
+  // ...
+}
+```
+
+## 상태 관리
+
+- 로컬 상태는 `useState`를 사용합니다.
+- 복잡한 상태는 `useReducer`를 고려합니다.
+- 전역 상태는 Context API를 사용합니다.
+
+## 에러 처리
+
+- try-catch 블록을 사용하여 에러를 명시적으로 처리합니다.
+- 사용자 친화적인 에러 메시지를 제공합니다.
+
+## 주석 작성
+
+- 복잡한 로직에는 설명적인 주석을 추가합니다.
+- TODO 주석은 `// TODO:` 형식으로 작성합니다.
+- 함수와 컴포넌트에는 JSDoc 스타일 주석을 사용합니다.
+
+## 코드 포맷팅
+
+- ESLint와 Prettier 설정을 따릅니다.
+- 들여쓰기는 2칸을 사용합니다.
+- 세미콜론을 사용합니다.
+- 작은따옴표 대신 큰따옴표를 사용합니다.

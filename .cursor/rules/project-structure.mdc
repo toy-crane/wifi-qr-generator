@@ -1,0 +1,38 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+
+# Project Structure Guidelines
+
+## Directory Structure
+
+### App Directory (`src/app/`)
+
+- 모든 페이지 컴포넌트는 `src/app` 디렉토리 내에 위치해야 합니다.
+- 각 라우트는 자체 디렉토리를 가지며, `page.tsx` 파일을 포함해야 합니다.
+- 레이아웃 컴포넌트는 `layout.tsx`로 명명해야 합니다.
+
+### Components Directory (`src/components/`)
+
+- 재사용 가능한 컴포넌트는 `src/components` 디렉토리에 위치해야 합니다.
+- UI 컴포넌트는 `src/components/ui` 디렉토리에 위치해야 합니다.
+- 각 컴포넌트는 자체 디렉토리나 단일 파일로 구성될 수 있습니다.
+
+### Library Directory (`src/lib/`)
+
+- 유틸리티 함수, 설정, 상수 등은 `src/lib` 디렉토리에 위치해야 합니다.
+- API 관련 로직도 이 디렉토리에 포함됩니다.
+
+## File Naming Conventions
+
+- 컴포넌트 파일: PascalCase (예: `Button.tsx`, `Card.tsx`)
+- 유틸리티 파일: camelCase (예: `utils.ts`, `constants.ts`)
+- 페이지 파일: `page.tsx`
+- 레이아웃 파일: `layout.tsx`
+
+## Import Rules
+
+- 상대 경로 대신 절대 경로를 사용합니다.
+- 컴포넌트 임포트 시 명확한 이름을 사용합니다.
