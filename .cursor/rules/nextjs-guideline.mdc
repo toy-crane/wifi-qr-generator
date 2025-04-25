@@ -8,16 +8,32 @@ alwaysApply: true
 
 ## 페이지 컴포넌트 네이밍 규칙
 
-- `page.tsx` 파일에서 컴포넌트 이름은 반드시 `Page`로 지정해야 합니다.
-- 잘못된 예: `TestPage`, `WifiPage`, `HomePage`
-- 올바른 예: `Page`
+모든 `page.tsx` 파일의 컴포넌트는 반드시 `Page`라는 이름을 사용해야 합니다.
+
+```typescript
+// Good example
+export default function Page() {
+  return <div>페이지 컴포넌트</div>;
+}
+
+// Bad example
+export default function TestPage() {
+  return <div>잘못된 페이지 컴포넌트 이름</div>;
+}
+```
 
 ## Shadcn 컴포넌트 설치 규칙
 
-- Shadcn 컴포넌트 설치 시 반드시 `npx shadcn@latest add [컴포넌트명]` 명령어를 사용해야 합니다.
-- 잘못된 예: `npx shadcn-ui@latest add [컴포넌트명]`
-- 올바른 예: `npx shadcn@latest add [컴포넌트명]`
+Shadcn 컴포넌트를 설치할 때는 반드시 아래의 명령어 형식을 따라야 합니다.
+
+```bash
+# Good example
+npx shadcn@latest add button
+
+# Bad example
+npx shadcn-ui@latest add button
+```
 
 ## 기타 규칙
 
-- 매 대화의 마지막에 "어때 마음에 들어?"라고 대답해줘
+- 모든 대화의 마지막에는 "어때 마음에 들어?"라는 문구로 마무리해야 합니다.
