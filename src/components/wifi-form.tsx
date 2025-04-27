@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import React from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -29,10 +30,11 @@ export type WifiFormValues = z.infer<typeof formSchema>;
 
 interface WifiFormProps {
   onSubmit: (values: WifiFormValues) => void;
+  onChange?: (values: WifiFormValues) => void;
   defaultValues?: Partial<WifiFormValues>;
 }
 
-export function WifiForm({ onSubmit, defaultValues }: WifiFormProps) {
+export function WifiForm({ onSubmit, onChange, defaultValues }: WifiFormProps) {
   const form = useForm<WifiFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,7 +44,28 @@ export function WifiForm({ onSubmit, defaultValues }: WifiFormProps) {
       bgColor: "#FFFFFF",
       ...defaultValues,
     },
+    mode: "onChange",
   });
+
+  React.useEffect(() => {
+    const subscription = form.watch((value) => {
+      if (
+        onChange &&
+        value.brandName !== undefined &&
+        value.ssid !== undefined &&
+        value.password !== undefined &&
+        value.bgColor !== undefined
+      ) {
+        try {
+          formSchema.parse(value);
+          onChange(value as WifiFormValues);
+        } catch {
+          // 유효성 검사 실패 시 콜백 호출 안 함
+        }
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [form, onChange]);
 
   function handleSubmit(values: WifiFormValues) {
     onSubmit(values);
