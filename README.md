@@ -27,11 +27,13 @@ bun dev
 ```
 src/
 ├── app/          # Next.js 13+ App Router
-│   ├── hello/    # Hello 페이지
+│   ├── hello/    # Hello 페이지 (예시)
+│   ├── test/     # 테스트 페이지 (예시)
 │   └── wifi/     # WiFi QR 생성 페이지
 ├── components/   # 재사용 가능한 컴포넌트
-│   └── ui/      # UI 컴포넌트
-└── lib/         # 유틸리티 함수 및 공통 로직
+│   └── ui/      # UI 컴포넌트 (shadcn/ui)
+├── lib/         # 유틸리티 함수 및 공통 로직
+└── spec/         # 테스트 관련 파일
 ```
 
 ## 기술 스택
