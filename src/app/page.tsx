@@ -8,9 +8,9 @@ import { QrCard } from "@/components/qr-card";
 import { Button } from "@/components/ui/button";
 
 const defaultValues: WifiFormValues = {
-  brandName: "My Cafe",
-  ssid: "MyCafe_WIFI",
-  password: "password123",
+  brandName: "",
+  ssid: "",
+  password: "",
   bgColor: "#f0f0f0",
 };
 
